@@ -226,3 +226,42 @@ Playing song from old cassettee player
 - OldMusicPlayer class is a syatem that can only play songs from a cassette player.
 - MusicAdapter class is a adapter that connects the new systen(modern music player) with the old system.Inside it wecan create an object of OldMusicPlayer and calls its old method(playOldSong()).
 - In main class we dont directly use the old system.Instead we use the MusicAdapter to play modern sings,which internally calls the old players method.
+
+### 2.Facade Pattern:
+- It is a structural design pattern that provides Simple interface to a complex subsystem.
+- It hides the complexity of multiple classes and allows the client to interact with the system using one method.
+- To hide internal implementation details facade pattern is used.
+
+
+### Example:
+```java
+//Subsystem classes
+class Light {
+    void turnOn() {
+        System.out.println("Light is ON");
+    }
+}
+ 
+class Fan {
+    void turnOn() {
+        System.out.println("Fan is ON");
+    }
+}
+ 
+// Facade class
+class HomeFacade {
+    Light light = new Light();
+    Fan fan = new Fan();
+ 
+    void startHome() {
+        light.turnOn();
+        fan.turnOn();
+        System.out.println("Home started!");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        HomeFacade home = new HomeFacade();
+        home.startHome(); // Single call to start everything
+    }
+}
