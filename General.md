@@ -265,3 +265,178 @@ public class Main {
         home.startHome(); // Single call to start everything
     }
 }
+```
+
+**Output:**
+```
+Light is ON
+Fan is ON
+Home started!
+```
+### Explanation
+- Light and Fan are subsystem classes.
+- HomeFacade simplifies interaction — the client only calls startHome()
+- The client does not need to call each subsystem individually.
+- Facade pattern improves readability and reduces complexity.
+## 3.Behavioral Patterns:
+- Behavioral Patterne are concerned with how objects communicate and interact with each other.
+- They define ways of managing algorithims, responsibilities and communication betureen objects.
+ - Makes the communication between objects clear & flexible
+ - Improves code maintainability and readability.
+ Behavioral patterns are classified into 3 types:
+ - 1.Observer pattern
+ - 2.Strategy pattern
+ - 3.Command pattern
+ ### 1.Observer pattern:
+ - Observer pattern allows an object to notify multiple other objects automatically when its state changes.
+
+
+ ### Example
+ ```java
+ class InstagramAccount {
+    String follower1, follower2;
+ 
+    // Method to follow users
+    void follow(String f1, String f2) {
+        follower1 = f1;
+        follower2 = f2;
+    }
+ 
+    // Method to post a photo
+    void postPhoto(String photo) {
+        System.out.println("Posted: " + photo);
+        System.out.println("Notified: " + follower1);
+        System.out.println("Notified: " + follower2);
+    }
+}
+ 
+public class Main {
+    public static void main(String[] args) {
+        InstagramAccount account = new InstagramAccount();
+        account.follow("Asha", "Sruthi");
+        account.postPhoto("Sunset Photo");
+    }
+}
+```
+
+**Output:**
+```
+Posted: Sunset Photo
+Notified: Asha
+Notified: Sruthi
+```
+
+## Explanation:
+- InstagramAccount class: Stores followers and lets you post photos.
+- follow() method: Sets the followers’ names.
+- postPhoto() method: Prints the photo posted and notifies all followers.
+- Main class: Creates an account, adds followers, and posts a photo.
+- It basically simulates posting a photo and notifying followers.
+### 2.Strategy pattern:
+- Strategy Pattern allows an object to change it's behavior dynamically at runtime based on the situation. 
+- It helps in defining multiple ways to perform the same action, and we can choose the required strategy wherever needed.
+ 
+
+
+ ### Example:
+ ```java
+ interface PaymentStrategy {
+    void pay();
+}
+ 
+// Step 2: Implement card payment
+class CardPayment implements PaymentStrategy {
+    public void pay() {
+        System.out.println("Paid using Card");
+    }
+}
+ 
+// Step 3: Implement cash payment
+class CashPayment implements PaymentStrategy {
+    public void pay() {
+        System.out.println("Paid using Cash");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        PaymentStrategy payment = new CardPayment();
+        payment.pay();  // Output: Paid using Card
+ 
+        payment = new CashPayment();
+        payment.pay();  // Output: Paid using Cash
+    }
+}
+```
+
+**Output:**
+```
+Paid using Card
+Paid using Cash
+```
+
+### Explanation:
+- PaymentStrategy → Interface defining pay() method.
+- CardPayment and CashPayment → Different ways to pay (strategies).
+- Main class → Uses different strategies at runtime.
+
+### 3.Command pattern:
+- It is used to encapsulate a request as an object, allowing us to store, queue, or undo commands easily.
+- It separates the request from the object that executes it.
+- Ex: when you press ON or OFF button, you are not directly touching the TV,each button represents a command that tells the TV what to do.
+
+
+### Example:
+```java
+interface Command {
+    void execute();
+}
+ 
+// Step 2: Receiver class (Fan)
+class Fan {
+    void start() {
+        System.out.println("Fan Started!");
+    }
+}
+ 
+// Step 3: Concrete Command class
+class StartFanCommand implements Command {
+    Fan fan;
+ 
+    StartFanCommand(Fan fan) {
+        this.fan = fan;
+    }
+ 
+    public void execute() {
+        fan.start();
+    }
+}
+// Step 4: Invoker class (Remote)
+class Remote {
+    Command command;
+ 
+    void pressButton() {
+        command.execute();
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Fan fan = new Fan();                        
+        Command startFan = new StartFanCommand(fan);
+        Remote remote = new Remote();                
+        remote.command = startFan;  
+        remote.pressButton();        // Executes command
+    }
+}
+```
+
+**Output:**
+```
+Fan Started!
+```
+
+### Explanation:
+- Command interface → defines execute()
+- Fan → receiver (performs real action)
+- StartFanCommand → concrete command (calls fan.start())
+- Remote → invokes command (pressButton())
+- Main → connects all parts and runs
