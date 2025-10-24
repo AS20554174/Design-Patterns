@@ -598,7 +598,190 @@ Sum: 15
 Sum: 35
 ```
 ### 2.Hard Coding:
-- Storing
+- Storing fixed values directly in code instead of using variables, constants or configurations.
+
+### Example:
+```java
+public class HardCoding {
+    public static void main(String[] args) {
+        String username = "admin";
  
+        if (username.equals("admin")) {
+            System.out.println("Welcome Admin!");
+        } else {
+            System.out.println("Access Denied");
+        }
+    }
+}
+```
+
+**Output:**
+```
+Welcome Admin!
+```
+
+### 3.Magic Numbers:
+- A magic number is a number used directly in code without explanation.
+- Using unexplained numeric values directly in the code.
+- Makes the code confusing and hard to maintain.
+
+
+### Example:
+```java
+public class MagicNumber {
+    public static void main(String[] args) {
+        int speed = 130; // current speed
+ 
+        // Using a "magic number" 120 directly
+        if (speed > 120) {
+            System.out.println("Speed limit exceeded!");
+        } else {
+            System.out.println("Speed is within limit.");
+        }
+    }
+}
+```
+
+**Output:**
+```
+Speed limit exceeded!
+ ```
+
+## 3.Project management anti-Pattern:
+- These are common bad practices in managing projects that make software development slower,risky or more error prone.
+- These are classified into 4 types:
+- 1.Analysis Paralysis
+- 2.Death March
+- 3.Ivory Tower
+- 4.Scope creep
+
+### 1.Analysis Paralysis:
+- Analysis Paralysis happen when a team or developer spends too much time thinking or planning, instead of taking action.This delays the project.
+
+
+### Example:
+```java
+public class AnalysisParalysisExample {
+    public static void main(String[] args) {
+        String task = "Write Report";
+ 
+        // Overthinking every detail before starting
+        System.out.println("Step 1: Should I use Word or Google Docs?");
+        System.out.println("Step 2: Which font should I choose?");
+        System.out.println("Step 3: Should I make a Table of Contents?");
+        System.out.println("Step 4: Should I include charts or not?");
+ 
+        // Action is delayed
+        System.out.println("Result: Report not started yet!");
+    }
+}
+```
+
+**Output:**
+```Step 1: Should I use Word or Google Docs?
+Step 2: Which font should I choose?
+Step 3: Should I make a Table of Contents?
+Step 4: Should I include charts or not?
+Result: Report not started yet!
+```
+
+## 2.Death March:
+- A death march happens when a project has unrealistic deadlines or expectations,forcing the team to work long hours under pressure.
+- it often leads to burnout,low quality and missed deadlines.
+
+
+### Example:
+```java
+public class DeathMarchExample {
+    public static void main(String[] args) {
+        String project = "Build Website";
+        int daysToComplete = 5; // Unrealistic timeline
+ 
+        System.out.println("Project: " + project);
+        System.out.println("Deadline: " + daysToComplete + " days");
+ 
+        // Team reaction
+        System.out.println("Team is working 12 hours/day");
+        System.out.println("Team is stressed and exhausted");
+ 
+        // Consequence
+        System.out.println("Quality might suffer and deadline could be missed");
+    }
+}
+```
+
+**Output:**
+```
+Project: Build Website
+Deadline: 5 days
+Team is working 12 hours/day
+Team is stressed and exhausted
+Quality might suffer and deadline could be missed
+ ```
+
+ ## 3.Ivory Tower:
+ - Ivory Tower happen when decisions are made only by managers or senior staff without consulting team.
+ - This leads to poor decisions,confusion and delays.
+
+
+ ### Example:
+ ```java
+ public class IvoryTower {
+    public static void main(String[] args) {
+        // Manager decides task without consulting the team
+        String task = "Implement Login Module in 1 day";
+ 
+        // Team reaction
+        System.out.println("Manager assigned: " + task);
+        System.out.println("Team says: This is impossible in 1 day!");
+ 
+        // Consequence
+        System.out.println("Result: Confusion, stress, and delays");
+    }
+}
+```
+
+**Output:**
+```
+ Manager assigned: Implement Login Module in 1 day
+Team says: This is impossible in 1 day!
+Result: Confusion, stress, and delays
+```
+
+## 4.Scope Creep:
+- It happens when new feature keep getting added to a project without proper planning or approval.
+- This makes the project larger,slower,and more expensive than expected.
+
+
+### Example:
+```java
+public class ScopeCreepExample {
+    public static void main(String[] args) {
+        System.out.println("Project start: Build a simple calculator");
+ 
+        // New features keep getting added without approval
+        addFeature("Scientific Calculator");
+        addFeature("Currency Converter");
+        addFeature("Voice Assistant");
+ 
+        // Consequence
+        System.out.println("Result: Project delayed and over budget");
+    }
+ 
+    // Method to add a new feature
+    public static void addFeature(String feature) {
+        System.out.println("New feature added: " + feature);
+    }
+}
+```
+
+**Output:**
+```
+Project start: Build a simple calculator
+New feature added: Scientific Calculator
+New feature added: Currency Converter
+New feature added: Voice Assistant
+Result: Project delayed and over budget
+```
  
  
