@@ -279,7 +279,7 @@ Home started!
 - The client does not need to call each subsystem individually.
 - Facade pattern improves readability and reduces complexity.
 ## 3.Behavioral Patterns:
-- Behavioral Patterne are concerned with how objects communicate and interact with each other.
+- Behavioral Patterne are concerned with how objects communicate and interact with each other.s
 - They define ways of managing algorithims, responsibilities and communication betureen objects.
  - Makes the communication between objects clear & flexible
  - Improves code maintainability and readability.
@@ -440,3 +440,165 @@ Fan Started!
 - StartFanCommand → concrete command (calls fan.start())
 - Remote → invokes command (pressButton())
 - Main → connects all parts and runs
+---
+# Anti-Patterns:
+- An anti-pattern is a bad solution to a problem, it may look good at first, but later it creates more problems look in your project.
+- Misusing design patterns without understanding.
+- Trying to use a pattern everywhere (force-fitting)
+- Writing quick fixes instead of proper design.
+- copy-parting code without thinking..
+- Anti patterns are of 3 types:
+- 1. Design Anti-Patterns
+- 2. Coding Anti-Patterns
+- 3. Project Management Anti-Patterns.
+## 1.Design Anti-Patterns:
+- These happen when the software design or structure is poorly done.
+- These are classified into 3 types:
+- 1. God object
+- 2. Spaghetti Code
+- 3. Golden hammer
+### 1.God object:
+- A God object is a claes that tries to do everything.
+- it has too many responsibilities, making the program hard to understand, test and maintain.
+- This violates the single Responsibility principle in object oriented Programming.
+
+
+### Example:
+```java
+// God Object - doing too many things  
+class ApplicationManager {  
+    void manageUser() {  
+        System.out.println("Managing user data...");  
+    }  
+  
+    void processPayment() {  
+        System.out.println("Processing payment...");  
+    }  
+  
+    void generateReport() {  
+        System.out.println("Generating report...");  
+    }  
+}  
+  
+public class Main {  
+    public static void main(String[] args) {  
+        ApplicationManager app = new ApplicationManager();  
+  
+        app.manageUser();  
+        app.processPayment();  
+        app.generateReport();  
+    }  
+}
+```
+**Output:**
+ ```
+Managing user data...
+Processing payment...
+Generating report...
+```
+### 2.Spaghetti Code:
+- Spaghetti code means code that is tangled and messy-Just like a bowl of spaghetti.
+- There is no clear structure or flow, making it very hard to read, understand or modify. It usually happens when a program has too many if else statements or repeated logic without proper structure..
+
+### Example:
+```java
+public class Main {
+    public static void main(String[] args) {
+        int choice = 2;
+ 
+        if (choice == 1) {
+            System.out.println("Add Item");
+        } else if (choice == 2) {
+            System.out.println("Delete Item");
+        } else if (choice == 3) {
+            System.out.println("Update Item");
+        } else if (choice == 4) {
+            System.out.println("View Item");
+        } else {
+            System.out.println("Invalid choice");
+        }
+    }
+}
+```
+
+**Output:**
+```
+Delete Item
+```
+### 3.Golden Hammer:
+- It means using one familiar solution for every problem-even when its not the best fit.
+- Its like having only a hammer and thinking every problem is a nail.
+- In programming, it happens when we we use the same logic or technology everywhere instead of choosing whats suitable.
+
+
+### Example:
+```java
+public class Calculator {
+ 
+    void calculate(String operation, int a, int b) {
+        if (operation.equals("add")) {
+            System.out.println(a + b);
+        } else if (operation.equals("subtract")) {
+            System.out.println(a - b);
+        } else if (operation.equals("multiply")) {
+            System.out.println(a * b);
+        } else if (operation.equals("divide")) {
+            System.out.println(a / b);
+        } else {
+            System.out.println("Operation not supported");
+        }
+    }
+ 
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+ 
+        calc.calculate("add", 10, 5);       // prints 15
+        calc.calculate("divide", 20, 4);    // prints 5
+        calc.calculate("mod", 10, 3);       // prints Operation not supported
+    }
+}
+```
+**Output:**
+```
+15
+5
+Operation not supported
+```
+## 2.Coding Anti-Pattern:
+- Coding antipatterns happen due to bad programming or poor implementation.They make the code hard to read,maintain or reuse.
+- It is classified into 3 types:
+- 1.Copy-Paste programming
+- 2.Hard Coding
+- 3.magic Numbers
+
+### 1.Copy-Paste Programming:
+-Copying code from one place to another instead of writing reusable methods.
+- Leads to duplication and makesmaintenance hard.
+
+
+### Example:
+```java
+// Copy-Paste Programming - duplicating code instead of reusing
+public class CopyPasteExample {
+    public static void main(String[] args) {
+        // First calculation
+        int a = 10, b = 5;
+        System.out.println("Sum: " + (a + b));
+ 
+        // Copied code for another calculation
+        int x = 20, y = 15;
+        System.out.println("Sum: " + (x + y));
+    }
+}
+```
+
+**Output:**
+```
+Sum: 15
+Sum: 35
+```
+### 2.Hard Coding:
+- Storing
+ 
+ 
+ 
